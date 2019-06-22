@@ -17,7 +17,8 @@ import numpy as np
 WIDTH = 10
 HEIGHT = 10
 CIRCLE_RADIUS = 2
-#TODO: convert all the lists of points to NdArray for algebraic operations
+
+
 class Point: # not sure if classes need docstring
     """
     Center points of non-colliding circles
@@ -44,37 +45,42 @@ class Point: # not sure if classes need docstring
 all_points = []
 
         
-def _distance(point_1, point_2):
-    
-    dist = distance.euclidean(point_1.coordinates, point_2.coordinates)
-    
-    return dist
-
 def colliding(points, new_point):
     radius = CIRCLE_RADIUS
     for point in points:
         if _distance(point, new_point) < 2*radius:
             return True
-        
+
     return False
 
-        
 def show_points(points):
     all_xs, all_ys = [], []
     for point in points:
         all_xs.append(point.coordinates[0][0])
         all_ys.append(point.coordinates[0][1])
-        
-        
+
+
     plt.plot(all_xs, all_ys, "ro")
     plt.show()
+
+        
+def _distance(point_1, point_2):
+
+    dist = distance.euclidean(point_1.coordinates, point_2.coordinates)
+
+    return dist
     
 
 def calculate_all_distances(points):
+    # TODO: two numpy array have distance of all of them
+    # TODO: in respect to each other
     all_distances = np.array([])
+
     for point in points:
-        #distance_(point, points)
-        
+        one_point_to_rest = np.array([])
+        for second_point in points:
+            dis = _distance(point, second_point)
+            one_point_to_rest
         
     
 if __name__ == "__main__":
@@ -84,9 +90,10 @@ if __name__ == "__main__":
         if not colliding(point_collection, new_point):
             point_collection.append(new_point)
 
+    calculate_all_distances(point_collection)
 #    for point in points:
 #        point.move()
-        
+
     show_points(point_collection)
     
 
