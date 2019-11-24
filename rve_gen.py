@@ -14,8 +14,8 @@ import numpy as np
 #import copy
 
 
-WIDTH = 10
-HEIGHT = 10
+WIDTH = 100
+HEIGHT = 100
 CIRCLE_RADIUS = 2
 
 
@@ -37,7 +37,6 @@ class Point: # not sure if classes need docstring
 #        self.y += move_y
         self.coordinates += move_val
     
-              
 
     
     
@@ -79,13 +78,15 @@ def calculate_all_distances(points):
     for point in points:
         one_point_to_rest = np.array([])
         for second_point in points:
-            dis = _distance(point, second_point)
-            one_point_to_rest
+            dist = _distance(point, second_point)
+            all_distances
+            
+    return all_distances
         
     
 if __name__ == "__main__":
     point_collection = []
-    for i in range(100):
+    for i in range(1000):
         new_point = Point()
         if not colliding(point_collection, new_point):
             point_collection.append(new_point)
